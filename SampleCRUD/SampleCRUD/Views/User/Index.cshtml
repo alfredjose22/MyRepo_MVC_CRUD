@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SampleCRUD.Models.Users>
+
+@{
+    ViewBag.Title = "List of employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>@TempData["Message"]</h3>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">List of Employees</div>
+    <table class="table">
+        <tr>
+            <th>Employee ID
+            </th>
+            <th>Name
+            </th>
+            <th>Department
+            </th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
